@@ -13,7 +13,7 @@ class ControleurAccueil {
 
 // Affiche la liste de tous les billets du blog
 	public function accueil(){
-        $capteurs = $this->capteur->listerCapteurs();
+        $capteurs = $this->capteur->countCapteurs();
         $fuites = $this->capteur->countFuites();
         $vue = new Vue("Accueil");
         $vue->generer(array('capteurs' => $capteurs, 'fuites' => $fuites));

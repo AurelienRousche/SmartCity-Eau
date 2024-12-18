@@ -4,23 +4,26 @@
 
 //require_once 'Controleur/ControleurExemple.php';
 require_once 'Controleur/ControleurAccueil.php';
+require_once 'Controleur/ControleurCapteurs.php';
 require_once 'Vue/Vue.php';
 class Routeur {
 
     //private $ctrlExemple;
     private $ctrlAccueil;
+    private $ctrlCapteurs;
 
     public function __construct() {
-        //$this->ctrlExemple = new ControleurExemple();
+
         $this->ctrlAccueil = new ControleurAccueil();
+        $this->ctrlCapteurs = new ControleurCapteurs();
     }
 
     // Route une requête entrante : exécution l'action associée
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
-                if ($_GET['action']=='exemple') {
-					//controleur adequat pour chaque page
+                if ($_GET['action']=='capteurs') {
+					$this->ctrlCapteurs->listCapteurs();
 				}
                 else
                     throw new Exception("Action non valide");
