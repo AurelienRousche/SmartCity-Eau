@@ -1,0 +1,21 @@
+* {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#global {
+  height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 70px 20%;
+}
+
+#titre {
+  color: #000;
+}
