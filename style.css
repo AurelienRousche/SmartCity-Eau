@@ -57,7 +57,7 @@ nav a {
 }
 
 .box:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 #dashboard div #dashboard h2 {
@@ -93,6 +93,11 @@ nav a {
   font-size: 2rem;
 }
 
+#capteurTitle {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
 .capteurs {
   border: solid 1px #000;
   padding: 10px 20px;
@@ -102,13 +107,14 @@ nav a {
 
 .capteur {
   background: #fff;
-  margin: 10px;
+  margin: 20px;
   padding: 10px 20px;
   border-radius: 5px;
+  border: solid 2px #23b3ef;
 }
 
 .capteur a {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0;
   color: #000;
 }
@@ -148,4 +154,41 @@ nav a {
 }
 .buttons a:nth-child(2n) {
   background: red;
+}
+
+.percentage {
+  background: #23b3ef;
+  width: 100px;
+  animation: fadeIn 600ms linear forwards;
+}
+
+#graph {
+  gap: 50px;
+  align-items: end;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.date p {
+  width: 100px;
+}
+
+.graph {
+  display: flex;
+  gap: 50px;
+  align-items: end;
+  min-height: 350px;
+}
+
+@keyframes fadeIn {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: var(--height);
+  }
 }
