@@ -1,4 +1,4 @@
-<?php $this->titre = "Accueil Smartcity"; ?>
+<?php $this->titre = "Capteurs"; ?>
 <div class="capteurs">
 <?php 
     foreach ($capteurs as $capteur):
@@ -9,7 +9,7 @@
 
 ?>
     <div class="capteur">
-        <p><?= $id_capteur ?> : <?= $type_capteur ?>, <?= $emplacement ?> : <?= $valeur ?></p>
+        <a href="index.php?action=change&id=<?= $id_capteur?>"><?= $id_capteur ?> : <?= $type_capteur ?>, <?= $emplacement ?> : <?= $valeur ?></a>
     </div>
 <?php endforeach; ?>
 </div>

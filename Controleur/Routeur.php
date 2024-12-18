@@ -1,5 +1,4 @@
 
-
 <?php
 
 //require_once 'Controleur/ControleurExemple.php';
@@ -13,7 +12,7 @@ class Routeur {
     private $ctrlCapteurs;
 
     public function __construct() {
-
+        //$this->ctrlExemple = new ControleurExemple();
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlCapteurs = new ControleurCapteurs();
     }
@@ -25,9 +24,23 @@ class Routeur {
                 if ($_GET['action']=='capteurs') {
 					$this->ctrlCapteurs->listCapteurs();
 				}
+                if ($_GET['action'] == 'change'){
+                    $idCapteur = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlCapteurs->changeCapteurs($idCapteur);
+                }
+                if ($_GET['action'] == 'del'){
+                     $idCapteur = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlCapteurs->deleteCapteurs($idCapteur);
+                }
+                if ($_GET['action'] == "conf"){
+                    $emplacement = strip_tags(trim($this->getParametre($_POST, 'emplacement')));
+                    $valeur = strip_tags(trim($this->getParametre($_POST, 'valeur')));
+                    $idCapteur = intval($this->getParametre($_POST, 'id'));
+                    $this->ctrlCapteurs->modifCapteurs($idCapteur, $emplacement, $valeur);
+                }
                 else
                     throw new Exception("Action non valide");
-            }
+            }   
             else {  // aucune action définie : affichage de l'accueil
                 $this->ctrlAccueil->accueil();
             }
