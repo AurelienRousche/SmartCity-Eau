@@ -8,15 +8,15 @@
     <body>
         <div id="global">
             <header>
-                <a href="index.php"><h1 id="titreBlog">Mon Blog</h1></a>
-                <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
+                <a href="index.php"><h1 id="titreBlog">SmartCity - Eau</h1></a>
+                <p>Bienvenue au département eau!</p>
             </header>
             <div id="contenu">
                 <?= $contenu ?>
-            </div> <!-- #contenu -->
+            </div>
             <footer id="piedBlog">
-                Blog réalisé avec PHP, HTML5 et CSS.
+                footer
             </footer>
-        </div> <!-- #global -->
+        </div>
     </body>
 </html>

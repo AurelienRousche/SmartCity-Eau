@@ -4,23 +4,26 @@
 
 //require_once 'Controleur/ControleurExemple.php';
 require_once 'Controleur/ControleurAccueil.php';
+require_once 'Controleur/ControleurFuite.php';
 require_once 'Vue/Vue.php';
 class Routeur {
 
     //private $ctrlExemple;
     private $ctrlAccueil;
+    private $ctrlFuite;
 
     public function __construct() {
         //$this->ctrlExemple = new ControleurExemple();
         $this->ctrlAccueil = new ControleurAccueil();
+        $this->ctrlFuite = new ControleurFuite();
     }
 
     // Route une requête entrante : exécution l'action associée
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
-                if ($_GET['action']=='exemple') {
-					//controleur adequat pour chaque page
+                if ($_GET['action']=='fuites') {
+					$this->ctrlFuite->fuite();
 				}
                 else
                     throw new Exception("Action non valide");
