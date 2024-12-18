@@ -39,7 +39,6 @@ abstract class Modele {
      * @return PDO L'objet PDO de connexion à la BDD
      */
     private function getBdd() {
-		
 		global $host, $dbname, $user, $password;
 		
         if ($this->bdd == null) {

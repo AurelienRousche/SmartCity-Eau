@@ -1,22 +1,30 @@
+
 <?php
 
 //require_once 'Controleur/ControleurExemple.php';
-require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurFuites.php';
 require_once 'Controleur/ControleurFuite.php';
 require_once 'Vue/Vue.php';
+require_once 'Controleur/ControleurAccueil.php';
+require_once 'Controleur/ControleurCapteurs.php';
+require_once 'Controleur/ControleurConso.php';
+
 class Routeur {
 
     //private $ctrlExemple;
     private $ctrlAccueil;
     private $ctrlFuites;
     private $ctrlFuite;
+    private $ctrlCapteurs;
+    private $ctrlConso;
 
     public function __construct() {
         //$this->ctrlExemple = new ControleurExemple();
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlFuites = new ControleurFuites();
         $this->ctrlFuite = new ControleurFuite();
+        $this->ctrlCapteurs = new ControleurCapteurs();
+        $this->ctrlConso = new ControleurConso();
     }
 
     // Route une requête entrante : exécution l'action associée
@@ -42,9 +50,34 @@ class Routeur {
 						$this->ctrlFuite->edit_fuite($_GET['id'],'0');
 					}
 				}
+                else if ($_GET['action']=='capteurs') {
+					$this->ctrlCapteurs->listCapteurs();
+                    exit();
+				}
+               else if ($_GET['action'] == 'change'){
+                    $idCapteur = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlCapteurs->changeCapteurs($idCapteur);
+                    exit();
+                }
+                else if ($_GET['action'] == 'del'){
+                     $idCapteur = intval($this->getParametre($_GET, 'id'));
+                    $this->ctrlCapteurs->deleteCapteurs($idCapteur);
+                    exit();
+                }
+               else if ($_GET['action'] == "conf"){
+                    $emplacement = strip_tags(trim($this->getParametre($_POST, 'emplacement')));
+                    $valeur = strip_tags(trim($this->getParametre($_POST, 'valeur')));
+                    $idCapteur = intval($this->getParametre($_POST, 'id'));
+                    $this->ctrlCapteurs->modifCapteurs($idCapteur, $emplacement, $valeur);
+                    exit();
+                }
+                else if ($_GET['action'] == 'conso'){
+                    $this->ctrlConso->showConso();
+                    exit();
+                }
                 else
                     throw new Exception("Action non valide");
-            }
+            }   
             else {  // aucune action définie : affichage de l'accueil
                 $this->ctrlAccueil->accueil();
             }
