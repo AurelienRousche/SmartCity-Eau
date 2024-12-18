@@ -2,7 +2,6 @@
 
 <?php foreach ($fuites as $fuite):
     ?>
-	<a href="index.php?action=fuite">
 	<a href="<?= "index.php?action=fuite&id=" . $fuite['id_fuite'] ?>">
     <div id="row">
         <div>

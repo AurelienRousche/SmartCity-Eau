@@ -11,7 +11,6 @@ class ControleurFuite {
 		$this->fuite = new Fuite();
 			
     }
-
 // Affiche la liste de tous les billets du blog
 	public function fuite($id_fuite){
 		$données = $this->fuite->getFuite($id_fuite);
