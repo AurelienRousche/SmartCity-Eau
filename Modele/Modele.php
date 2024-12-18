@@ -39,6 +39,9 @@ abstract class Modele {
      * @return PDO L'objet PDO de connexion à la BDD
      */
     private function getBdd() {
+		
+		global $host, $dbname, $user, $password;
+		
         if ($this->bdd == null) {
             // Création de la connexion
             $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",
