@@ -2,29 +2,20 @@
 
 //require_once 'Controleur/ControleurExemple.php';
 require_once 'Controleur/ControleurAccueil.php';
-<<<<<<< Updated upstream
-=======
 require_once 'Controleur/ControleurFuites.php';
->>>>>>> Stashed changes
 require_once 'Controleur/ControleurFuite.php';
 require_once 'Vue/Vue.php';
 class Routeur {
 
     //private $ctrlExemple;
     private $ctrlAccueil;
-<<<<<<< Updated upstream
-=======
     private $ctrlFuites;
->>>>>>> Stashed changes
     private $ctrlFuite;
 
     public function __construct() {
         //$this->ctrlExemple = new ControleurExemple();
         $this->ctrlAccueil = new ControleurAccueil();
-<<<<<<< Updated upstream
-=======
         $this->ctrlFuites = new ControleurFuites();
->>>>>>> Stashed changes
         $this->ctrlFuite = new ControleurFuite();
     }
 
@@ -33,9 +24,6 @@ class Routeur {
         try {
             if (isset($_GET['action'])) {
                 if ($_GET['action']=='fuites') {
-<<<<<<< Updated upstream
-					$this->ctrlFuite->fuite();
-=======
 					$this->ctrlFuites->fuites();
 				}
 				else if($_GET['action']=='fuite'){
@@ -53,7 +41,6 @@ class Routeur {
 					else {
 						$this->ctrlFuite->edit_fuite($_GET['id'],'0');
 					}
->>>>>>> Stashed changes
 				}
                 else
                     throw new Exception("Action non valide");

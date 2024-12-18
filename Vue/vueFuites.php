@@ -2,11 +2,8 @@
 
 <?php foreach ($fuites as $fuite):
     ?>
-<<<<<<< Updated upstream
 	<a href="index.php?action=fuite">
-=======
 	<a href="<?= "index.php?action=fuite&id=" . $fuite['id_fuite'] ?>">
->>>>>>> Stashed changes
     <div id="row">
         <div>
 			ID:<?= $fuite['id_fuite'];?>
@@ -26,8 +23,4 @@
     </div>
 	</a>
     <hr />
-<<<<<<< Updated upstream
 <?php endforeach; ?>
-=======
-<?php endforeach; ?>
->>>>>>> Stashed changes
