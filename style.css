@@ -175,6 +175,8 @@ nav a {
 
 .date p {
   width: 100px;
+  line-height: 1.2rem;
+  text-align: center;
 }
 
 .graph {
