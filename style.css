@@ -12,8 +12,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 200px;
+  margin: 0 200px;
   width: 100%;
+}
+
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
 }
 
 nav a {
@@ -22,13 +30,21 @@ nav a {
   color: #000;
 }
 
+header nav a:active {
+  transform: scale(0.5);
+}
+
+nav a:hover {
+  border-bottom: solid 2px #23b3ef;
+}
+
 #global {
   height: calc(100vh - 100px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  margin: 50px 20%;
+  margin: 50px 150px;
 }
 
 #titre {
@@ -36,13 +52,15 @@ nav a {
 }
 
 #dashboard {
-  width: fit-content;
-  height: 100%;
   background: #000;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   gap: 30px;
   border-radius: 10px;
+  width: fit-content;
 }
 
 .box {
@@ -53,15 +71,22 @@ nav a {
   position: relative;
   border-radius: 10px;
   color: #000;
-  transition: transform 150ms;
+  transition: 100ms;
 }
 
-.box:hover {
+.box:hover,
+.capteur:hover {
   transform: scale(1.02);
 }
 
-#dashboard div #dashboard h2 {
+.box:active,
+.capteur:active {
+  transform: scale(0.94);
+}
+
+.box h2 {
   font-size: 2rem;
+  margin: 0;
 }
 
 .metrecube {
@@ -111,6 +136,7 @@ nav a {
   padding: 10px 20px;
   border-radius: 5px;
   border: solid 2px #23b3ef;
+  transition: 100ms;
 }
 
 .capteur a {
@@ -145,15 +171,29 @@ nav a {
   align-items: center;
 }
 
-.buttons a {
+.buttons a,
+.buttons button {
   color: #fff;
   background: #23b3ef;
   padding: 10px;
   border-radius: 5px;
   font-size: 1.7rem;
+  cursor: pointer;
+  border: solid 2px grey;
+  transition: 100ms;
 }
 .buttons a:nth-child(2n) {
   background: red;
+}
+
+.buttons a:hover,
+.buttons button:hover {
+  transform: scale(1.02);
+}
+
+.buttons a:active,
+.buttons button:active {
+  transform: scale(0.94);
 }
 
 .percentage {
@@ -165,6 +205,7 @@ nav a {
 #graph {
   gap: 50px;
   align-items: end;
+  position: relative;
 }
 
 .date {
