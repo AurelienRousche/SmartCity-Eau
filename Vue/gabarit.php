@@ -12,6 +12,7 @@
                 <nav>
                     <a href="<?= "index.php?action=capteurs" ?>">Capteurs</a>
                     <a href="<?= "index.php?action=fuites" ?>">Fuites</a>
+                    <a href="<?= "index.php?action=conso" ?>">Consommation</a>
                 </nav>
             </header>
             <div id="contenu">

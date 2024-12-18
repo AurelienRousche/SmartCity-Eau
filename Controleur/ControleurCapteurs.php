@@ -1,7 +1,7 @@
 <?php
 
-require_once "Modele/Capteur.php";
 require_once 'Vue/Vue.php';
+require_once "Modele/Capteur.php";
 
 class ControleurCapteurs {
 
