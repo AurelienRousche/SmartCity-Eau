@@ -9,6 +9,10 @@
         <div id="global">
             <header>
                 <a href="index.php"><h1 id="titre">SmartCity - Eau</h1></a>
+                <nav>
+                    <a href="<?= "index.php?action=capteurs" ?>">Capteurs</a>
+                    <a href="<?= "index.php?action=fuites" ?>">Fuites</a>
+                </nav>
             </header>
             <div id="contenu">
                 <?= $contenu ?>

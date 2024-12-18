@@ -5,7 +5,7 @@
  * Centralise les services d'accès à une base de données.
  * Utilise l'API PDO
  *
- * @author Baptiste Pesquet
+ * author Baptiste Pesquet
  */
  
 require_once 'config_db.php';
@@ -41,8 +41,8 @@ abstract class Modele {
     private function getBdd() {
         if ($this->bdd == null) {
             // Création de la connexion
-            $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",
-                    "$user", "$password",
+            $this->bdd = new PDO("mysql:host=localhost;dbname=smartcity_eau;charset=utf8",
+                    "root", "",
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
         return $this->bdd;

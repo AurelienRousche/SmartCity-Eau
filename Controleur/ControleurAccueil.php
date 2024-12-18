@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Vue/Vue.php';
 require_once "Modele/Capteur.php";
+require_once 'Vue/Vue.php';
 
 class ControleurAccueil {
 
@@ -13,9 +13,10 @@ class ControleurAccueil {
 
 // Affiche la liste de tous les billets du blog
 	public function accueil(){
-        $capteur = $this->capteur->listerCapteurs();
+        $capteurs = $this->capteur->listerCapteurs();
+        $fuites = $this->capteur->countFuites();
         $vue = new Vue("Accueil");
-        $vue->generer(array(array('capteur' => $capteur)));
+        $vue->generer(array('capteurs' => $capteurs, 'fuites' => $fuites));
     }
 
 }
