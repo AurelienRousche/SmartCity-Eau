@@ -9,19 +9,19 @@ class ControleurAccueil {
 
     private $capteur;
     private $conso;
-    private $fuites;
+    private $fuite;
 
     public function __construct() {
 		$this->capteur = new Capteur();
     $this->conso = new Conso();
-    $this->fuites = new Fuite();
+		$this->fuite = new Fuite();
     }
 
 // Affiche la liste de tous les billets du blog
 	public function accueil(){
         $capteurs = $this->capteur->countCapteurs();
-        $fuites = $this->fuites->countFuites();
         $consoTot = $this->conso->calcConsoTotaleDernierJour();
+        $fuites = $this->fuite->countFuites();
         $vue = new Vue("Accueil");
         $vue->generer(array('capteurs' => $capteurs, 'fuites' => $fuites, 'consoTot' => $consoTot));
     }

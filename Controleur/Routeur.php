@@ -4,10 +4,11 @@
 //require_once 'Controleur/ControleurExemple.php';
 require_once 'Controleur/ControleurFuites.php';
 require_once 'Controleur/ControleurFuite.php';
-require_once 'Vue/Vue.php';
 require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurCapteurs.php';
 require_once 'Controleur/ControleurConso.php';
+require_once 'Controleur/ControleurAjout.php';
+require_once 'Vue/Vue.php';
 
 class Routeur {
 
@@ -17,6 +18,7 @@ class Routeur {
     private $ctrlFuite;
     private $ctrlCapteurs;
     private $ctrlConso;
+    private $ctrlAjout;
 
     public function __construct() {
         //$this->ctrlExemple = new ControleurExemple();
@@ -25,6 +27,7 @@ class Routeur {
         $this->ctrlFuite = new ControleurFuite();
         $this->ctrlCapteurs = new ControleurCapteurs();
         $this->ctrlConso = new ControleurConso();
+        $this->ctrlAjout = new ControleurAjout();
     }
 
     // Route une requête entrante : exécution l'action associée
@@ -64,7 +67,7 @@ class Routeur {
                     exit();
                 }
                 else if ($_GET['action'] == 'del'){
-                     $idCapteur = intval($this->getParametre($_GET, 'id'));
+                    $idCapteur = intval($this->getParametre($_GET, 'id'));
                     $this->ctrlCapteurs->deleteCapteurs($idCapteur);
                     exit();
                 }
@@ -75,6 +78,15 @@ class Routeur {
                     $this->ctrlCapteurs->modifCapteurs($idCapteur, $emplacement, $valeur);
                     exit();
                 }
+				else if ($_GET['action'] == "ajout"){
+                    $this->ctrlAjout->ajout();
+                    exit();
+				}
+				else if ($_GET['action'] == "conf_ajout"){
+					$emplacement = strip_tags(trim($this->getParametre($_POST, 'emplacement')));
+					$type = strip_tags(trim($this->getParametre($_POST, 'type')));
+					$this->ctrlCapteurs->ajouterCapteurs($emplacement, $type);
+				}
                 else if ($_GET['action'] == 'conso'){
                     $this->ctrlConso->showConso();
                     exit();
@@ -127,5 +139,4 @@ class Routeur {
         else
             throw new Exception("Paramètre '$nom' absent");
     }
-
 }

@@ -19,7 +19,6 @@ class Fuite extends Modele {
 		$sql = 'UPDATE fuites_eau SET statut = ? WHERE id_fuite=?';
 		$req = $this->executerRequete($sql,array($value,$id_fuite));
 	}
-
     public function countFuites(){
         $sql = "SELECT COUNT(id_fuite) AS nbr_fuites FROM fuites_eau";
         $nbrFuites = $this->executerRequete($sql);
