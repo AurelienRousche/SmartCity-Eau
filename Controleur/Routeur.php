@@ -75,6 +75,27 @@ class Routeur {
                     $this->ctrlConso->showConso();
                     exit();
                 }
+                if ($_GET['action'] == 'changeconso'){
+                    if($_POST['showButton']){
+                        if (!empty($_POST['start-date'])){
+                            $startDate = $_POST['start-date'];
+                        }else {
+                            $erreur['start-date'] = true;
+                        }
+                        if (!empty($_POST['end-date'])){
+                            $endDate =$_POST['end-date'];
+                        }else {
+                            $erreur['end-date'] = true;
+                        }
+                        if (empty($erreur)){
+                            $this->ctrlConso->changeConso($startDate, $endDate);
+
+                        }
+                        else {
+                            $this->ctrlConso->showConso();
+                        }
+                    }
+                }
                 else
                     throw new Exception("Action non valide");
             }   

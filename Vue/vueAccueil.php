@@ -11,10 +11,10 @@
 ?>
 <div id="home">
     <div id="dashboard">
-        <div class="actifs box">
+        <a href="index.php?action=capteurs" class="actifs box">
             <h2>Capteurs actifs</h2>
             <p class="number"><?= $nbr_capteurs ?></p>   
-        </div>
+        </a>
         <a href="index.php?action=conso" class="conso box">
             <h2>Conso totale de la journée</h2>
             <div class="metrecube">
@@ -22,7 +22,7 @@
                 <p class="m3">m3</p>
             </div>
         </a>
-        <a class="fuites box">
+        <a href="index.php?action=fuites" class="fuites box">
             <h2>Fuites</h2>
             <p class="number"><?= $nbr_fuites ?></p>   
         </a>
