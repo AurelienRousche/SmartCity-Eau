@@ -9,12 +9,6 @@ class Capteur extends Modele {
         return $capteurs;
     }
 
-    public function countFuites(){
-        $sql = "SELECT COUNT(id_fuite) AS nbr_fuites FROM fuites_eau WHERE statut != 'résolu'";
-        $fuites = $this->executerRequete($sql);
-        return $fuites;
-    }
-
     public function listerCapteurs(){
         $sql = "SELECT * FROM capteurs_eau";
         $capteurs = $this->executerRequete($sql);
@@ -40,5 +34,10 @@ class Capteur extends Modele {
     public function modifCapteurs($idCapteur, $emplacement, $valeur){
         $sql = "UPDATE capteurs_eau SET emplacement=?, valeur=? WHERE id_capteur=?";
         $this->executerRequete($sql, array($emplacement, $valeur, $idCapteur));
+    }
+	
+	public function ajoutCapteurs($emplacement, $type_capteur){
+        $sql = "INSERT INTO capteurs_eau (emplacement, valeur, type_capteur) VALUES (?, 0, ?)";
+        $this->executerRequete($sql, array($emplacement, $type_capteur));
     }
 }

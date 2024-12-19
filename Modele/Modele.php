@@ -39,15 +39,12 @@ abstract class Modele {
      * @return PDO L'objet PDO de connexion à la BDD
      */
     private function getBdd() {
-		global $host, $dbname, $user, $password;
-		
+		global $localhost, $localdbname, $localuser, $localpassword;
         if ($this->bdd == null) {
-            // Création de la connexion
-            $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",
-                    "$user", "$password",
+            $this->bdd = new PDO("mysql:host=$localhost;dbname=$localdbname;charset=utf8",
+                    "$localuser", "$localpassword",
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
         return $this->bdd;
     }
-
 }

@@ -26,16 +26,18 @@ class ControleurCapteurs {
 
     public function deleteCapteurs($idCapteur){
       $this->capteur->deleteCapteur($idCapteur);
-      $capteurs = $this->capteur->listerCapteurs();
-      $vue = new Vue("Capteurs");
-      $vue->generer(array('capteurs' => $capteurs));
+      $this->listCapteurs();
     }
 
     public function modifCapteurs($idCapteur, $emplacement, $valeur){
       $this->capteur->modifCapteurs($idCapteur, $emplacement, $valeur);
-      $capteurs = $this->capteur->listerCapteurs();
-      $vue = new Vue("Capteurs");
-      $vue->generer(array( 'capteurs' => $capteurs));
+      $this->listCapteurs();
     }
+	
+	public function ajouterCapteurs($emplacement, $type){
+	  $this->capteur->ajoutCapteurs($emplacement, $type	);
+      $this->listCapteurs();
+	}
+
 }
 

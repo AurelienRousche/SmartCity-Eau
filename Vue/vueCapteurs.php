@@ -1,5 +1,10 @@
 <?php $this->titre = "Capteurs"; ?>
 <div class="capteurs">
+	<a href="index.php?action=ajout">
+		<div>
+			Ajouter
+		</div>
+	</a>
 <?php 
     foreach ($capteurs as $capteur):
         $id_capteur = $capteur['id_capteur'];

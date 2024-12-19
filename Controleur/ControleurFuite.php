@@ -19,7 +19,7 @@ class ControleurFuite {
     }
 	
 	public function edit_fuite($id_fuite,$value){
-		$this->fuite->editStatutFuite($id_fuite,$value);
+		$this->fuite->editStatutFuite($id_fuite, $value);
 		$this->fuite($id_fuite);
     }
 

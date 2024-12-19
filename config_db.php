@@ -1,6 +1,11 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'smartcity_eau';
-$user = 'root';
-$password = '';
+$localhost = 'localhost';
+$localdbname = 'smartcity_eau';
+$localuser = 'root';
+$localpassword = '';
+
+$globalhost = 'localhost';
+$globaldbname = 'smartcity_db';
+$globaluser = 'root';
+$globalpassword = '';

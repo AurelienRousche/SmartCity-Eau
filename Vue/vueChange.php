@@ -15,5 +15,4 @@
         <button type="submit">Confirmer</button>
         <a id="del" href="<?= "index.php?action=del&id=$id"?>">🗑️</a>
     </div>
-
 </form>
