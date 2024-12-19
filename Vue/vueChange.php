@@ -10,7 +10,7 @@
     <input type="hidden" name="id" value="<?= $id ?>">
     <input type="text" placeholder="emplacement" name="emplacement" value="<?=$emplacement?>">
     <?php if ($type=='consommation'): ?>
-    <input type="text" placeholder="valeur" name="valeur" value="<?=$valeur?>">
+    <input type="number" placeholder="valeur" name="valeur" step="0.01" value="<?=$valeur?>">
     <?php else: ?>
     <input type="hidden" name="valeur" value="<?=$valeur?>">
     <?php endif; ?>

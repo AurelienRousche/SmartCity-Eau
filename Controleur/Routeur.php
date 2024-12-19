@@ -1,7 +1,6 @@
 
 <?php
 
-//require_once 'Controleur/ControleurExemple.php';
 require_once 'Controleur/ControleurFuites.php';
 require_once 'Controleur/ControleurFuite.php';
 require_once 'Controleur/ControleurAccueil.php';
@@ -12,7 +11,6 @@ require_once 'Vue/Vue.php';
 
 class Routeur {
 
-    //private $ctrlExemple;
     private $ctrlAccueil;
     private $ctrlFuites;
     private $ctrlFuite;
@@ -21,7 +19,6 @@ class Routeur {
     private $ctrlAjout;
 
     public function __construct() {
-        //$this->ctrlExemple = new ControleurExemple();
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlFuites = new ControleurFuites();
         $this->ctrlFuite = new ControleurFuite();
@@ -72,8 +69,8 @@ class Routeur {
                     exit();
                 }
                else if ($_GET['action'] == "conf"){
-                    $emplacement = strip_tags(trim($this->getParametre($_POST, 'emplacement')));
-                    $valeur = strip_tags(trim($this->getParametre($_POST, 'valeur')));
+                    $emplacement = htmlspecialchars(strip_tags(trim($this->getParametre($_POST, 'emplacement'))));
+                    $valeur = round(floatval($this->getParametre($_POST, 'valeur')), 2);
                     $idCapteur = intval($this->getParametre($_POST, 'id'));
                     $this->ctrlCapteurs->modifCapteurs($idCapteur, $emplacement, $valeur);
                     exit();
@@ -83,9 +80,15 @@ class Routeur {
                     exit();
 				}
 				else if ($_GET['action'] == "conf_ajout"){
-					$emplacement = strip_tags(trim($this->getParametre($_POST, 'emplacement')));
-					$type = strip_tags(trim($this->getParametre($_POST, 'type')));
-					$this->ctrlCapteurs->ajouterCapteurs($emplacement, $type);
+					$type_whitelist = array('consommation','fuite');
+					$emplacement = htmlspecialchars(strip_tags(trim($this->getParametre($_POST, 'emplacement'))));
+					$type = htmlspecialchars(strip_tags(trim($this->getParametre($_POST, 'type'))));
+					if (in_array($type, $type_whitelist)){
+						$this->ctrlCapteurs->ajouterCapteurs($emplacement, $type);
+					}
+					else {
+						throw new Exception("Type non valide");
+					}
 					exit();
 				}
                 else if ($_GET['action'] == 'conso'){
