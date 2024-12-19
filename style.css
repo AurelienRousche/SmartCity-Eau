@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 header {
@@ -83,14 +83,13 @@ nav a:hover {
 }
 
 #dashboard {
-  background: #000;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   padding: 30px;
-  gap: 30px;
   border-radius: 10px;
+  gap: 20px;
   width: fit-content;
 }
 
@@ -100,9 +99,10 @@ nav a:hover {
   height: 250px;
   padding: 50px;
   position: relative;
-  border-radius: 10px;
   color: #000;
   transition: 100ms;
+  border: solid 30px #000;
+  border-radius: 10px;
 }
 
 .box:hover,
