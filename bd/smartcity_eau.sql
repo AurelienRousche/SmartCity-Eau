@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 19, 2024 at 09:53 AM
--- Server version: 11.8.0-MariaDB-log
+-- Generation Time: Dec 19, 2024 at 10:03 AM
+-- Server version: 11.6.2-MariaDB-log
 -- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -88,7 +88,7 @@ CREATE TABLE `fuites_eau` (
 --
 
 INSERT INTO `fuites_eau` (`id_fuite`, `id_capteur`, `description`, `date_signalement`, `statut`) VALUES
-(1, 2, 'Fuite détectée au sol', '2024-06-15 10:00:00', '1'),
+(1, 2, 'Fuite détectée au sol', '2024-06-15 10:00:00', '0'),
 (2, 2, 'Réparation en cours', '2024-06-16 14:30:00', '0'),
 (3, 5, 'Fuite dans la conduite principale', '2024-06-17 09:30:00', '1');
 
@@ -118,6 +118,12 @@ ALTER TABLE `fuites_eau`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `capteurs_eau`
+--
+ALTER TABLE `capteurs_eau`
+  MODIFY `id_capteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `consommation_eau`

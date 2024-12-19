@@ -86,6 +86,7 @@ class Routeur {
 					$emplacement = strip_tags(trim($this->getParametre($_POST, 'emplacement')));
 					$type = strip_tags(trim($this->getParametre($_POST, 'type')));
 					$this->ctrlCapteurs->ajouterCapteurs($emplacement, $type);
+					exit();
 				}
                 else if ($_GET['action'] == 'conso'){
                     $this->ctrlConso->showConso();
