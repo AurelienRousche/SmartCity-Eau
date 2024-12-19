@@ -6,20 +6,46 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 200px;
+  margin: 0 200px;
   width: 100%;
+  margin-bottom: 20px;
+}
+
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
+}
+
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
 }
 
 nav a {
-  font-size: 1.4rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.4rem);
   padding: 10px 20px;
   color: #000;
+}
+
+header nav a:active {
+  transform: scale(0.5);
+}
+
+nav a:hover {
+  border-bottom: solid 2px #23b3ef;
 }
 
 #global {
@@ -28,7 +54,23 @@ nav a {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  margin: 50px 20%;
+  margin: 50px 150px;
+}
+
+@media screen and (max-width: 850px) {
+  #global {
+    margin: 15px;
+  }
+  header {
+    flex-direction: column;
+  }
+<<<<<<< HEAD
+  #global .box {
+    width: 200px;
+    height: 200px;
+  }
+=======
+>>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
 }
 
 #titre {
@@ -36,13 +78,15 @@ nav a {
 }
 
 #dashboard {
-  width: fit-content;
-  height: 100%;
   background: #000;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   padding: 30px;
   gap: 30px;
   border-radius: 10px;
+  width: fit-content;
 }
 
 .box {
@@ -53,15 +97,22 @@ nav a {
   position: relative;
   border-radius: 10px;
   color: #000;
-  transition: transform 150ms;
+  transition: 100ms;
 }
 
-.box:hover {
-  transform: scale(1.03);
+.box:hover,
+.capteur:hover {
+  transform: scale(1.02);
 }
 
-#dashboard div #dashboard h2 {
+.box:active,
+.capteur:active {
+  transform: scale(0.94);
+}
+
+.box h2 {
   font-size: 2rem;
+  margin: 0;
 }
 
 .metrecube {
@@ -93,22 +144,31 @@ nav a {
   font-size: 2rem;
 }
 
+#capteurTitle {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
 .capteurs {
-  border: solid 1px #000;
+  border: solid 2px #000;
   padding: 10px 20px;
   border-radius: 10px;
-  background: #000;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 50px rgba(35, 179, 239, 0.5);
 }
 
 .capteur {
   background: #fff;
-  margin: 10px;
+  margin: 20px;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 50px;
+  border: solid 2px #23b3ef;
+  transition: 100ms;
+  box-shadow: 0 0 20px rgba(35, 179, 239, 0.3);
 }
 
 .capteur a {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 2rem);
   margin: 0;
   color: #000;
 }
@@ -116,11 +176,13 @@ nav a {
 .modifCapteur {
   display: flex;
   flex-direction: column;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   gap: 20px;
   border-radius: 10px;
   padding: 50px;
   border: solid 2px #000;
+  backdrop-filter: blur(3px);
+  background: transparent;
 }
 
 .modifCapteur p,
@@ -130,7 +192,7 @@ nav a {
 
 .modifCapteur input {
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
 
 .buttons {
@@ -139,13 +201,66 @@ nav a {
   align-items: center;
 }
 
-.buttons a {
+.buttons a,
+.buttons button {
   color: #fff;
   background: #23b3ef;
   padding: 10px;
   border-radius: 5px;
   font-size: 1.7rem;
+  cursor: pointer;
+  border: solid 2px grey;
+  transition: 100ms;
 }
 .buttons a:nth-child(2n) {
   background: red;
 }
+
+.buttons a:hover,
+.buttons button:hover {
+  transform: scale(1.02);
+}
+
+.buttons a:active,
+.buttons button:active {
+  transform: scale(0.94);
+}
+
+.containerCanvas {
+  width: 70vw;
+  height: 500px;
+}
+
+#myChart {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: var(--height);
+  }
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+input[type="date"].red {
+  border: solid 2px red;
+  color: red;
+}
+<<<<<<< HEAD
+
+#row div {
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: #000;
+}
+=======
+>>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47

@@ -4,7 +4,7 @@ require_once "Modele/Modele.php";
 
 class Capteur extends Modele {
     public function countCapteurs(){
-        $sql = "SELECT COUNT(id_capteur) AS nbr_capteur, ROUND(SUM(valeur)) AS conso_tot FROM `capteurs_eau` WHERE valeur > 0;";
+        $sql = "SELECT COUNT(id_capteur) AS nbr_capteur FROM `capteurs_eau`";
         $capteurs = $this->executerRequete($sql);
         return $capteurs;
     }

@@ -16,4 +16,10 @@ class ControleurConso {
         $vue = new Vue("Conso");
         $vue->generer(array('conso' => $consos));
     }
+
+    public function changeConso($startDate, $endDate){
+        $consos = $this->conso->calcConso($startDate, $endDate);
+        $vue = new Vue("Conso");
+        $vue->generer(array('conso'=>$consos));
+    }
 }

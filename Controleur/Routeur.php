@@ -33,10 +33,12 @@ class Routeur {
             if (isset($_GET['action'])) {
                 if ($_GET['action']=='fuites') {
 					$this->ctrlFuites->fuites();
+                    exit();
 				}
 				else if($_GET['action']=='fuite'){
 					if(isset($_GET['id'])) {
 						$this->ctrlFuite->fuite($_GET['id']);
+                        exit();
 					}
 					else {
 						throw new Exception("Pas d'id");
@@ -45,9 +47,11 @@ class Routeur {
 				else if($_GET['action']=='edit_fuite'){
 					if(isset($_POST['statut'])){
 						$this->ctrlFuite->edit_fuite($_GET['id'],'1');
+                        exit();
 					}
 					else {
 						$this->ctrlFuite->edit_fuite($_GET['id'],'0');
+                        exit();
 					}
 				}
                 else if ($_GET['action']=='capteurs') {
@@ -74,6 +78,36 @@ class Routeur {
                 else if ($_GET['action'] == 'conso'){
                     $this->ctrlConso->showConso();
                     exit();
+                }
+                if ($_GET['action'] == 'changeconso'){
+                    if($_POST['showButton']){
+<<<<<<< HEAD
+                        if (empty($_POST['start-date'])){
+                            $startDate = htmlspecialchars($_POST['start-date']);
+=======
+                        if (!empty($_POST['start-date'])){
+                            $startDate = $_POST['start-date'];
+>>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
+                        }else {
+                            $erreur['start-date'] = true;
+                        }
+                        if (!empty($_POST['end-date'])){
+<<<<<<< HEAD
+                            $endDate = htmlspecialchars($_POST['end-date']);
+=======
+                            $endDate =$_POST['end-date'];
+>>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
+                        }else {
+                            $erreur['end-date'] = true;
+                        }
+                        if (empty($erreur)){
+                            $this->ctrlConso->changeConso($startDate, $endDate);
+
+                        }
+                        else {
+                            $this->ctrlConso->showConso();
+                        }
+                    }
                 }
                 else
                     throw new Exception("Action non valide");
