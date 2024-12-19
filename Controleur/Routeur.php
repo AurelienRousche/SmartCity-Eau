@@ -81,22 +81,14 @@ class Routeur {
                 }
                 if ($_GET['action'] == 'changeconso'){
                     if($_POST['showButton']){
-<<<<<<< HEAD
-                        if (empty($_POST['start-date'])){
-                            $startDate = htmlspecialchars($_POST['start-date']);
-=======
+
                         if (!empty($_POST['start-date'])){
-                            $startDate = $_POST['start-date'];
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
+                            $startDate = htmlspecialchars($_POST['start-date']);
                         }else {
                             $erreur['start-date'] = true;
                         }
                         if (!empty($_POST['end-date'])){
-<<<<<<< HEAD
                             $endDate = htmlspecialchars($_POST['end-date']);
-=======
-                            $endDate =$_POST['end-date'];
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
                         }else {
                             $erreur['end-date'] = true;
                         }

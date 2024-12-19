@@ -14,12 +14,10 @@ class Conso extends Modele {
         $consos = $this->executerRequete($sql, array($startDate, $endDate));
         return $consos;
     }
-<<<<<<< HEAD
+
     public function calcConsoTotaleDernierJour(){
         $sql = "SELECT SUM(valeur_litres) AS tot FROM consommation_eau WHERE date_mesure >= DATE_SUB(CURDATE(), INTERVAL 1 DAY);";
         $consoTotDernierJour = $this->executerRequete($sql);
         return $consoTotDernierJour->fetch();
     }
-=======
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
 }

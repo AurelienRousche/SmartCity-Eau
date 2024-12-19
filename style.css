@@ -34,6 +34,14 @@ a#title:hover {
   transform: scale(1.02);
 }
 
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
+}
+
 nav a {
   font-size: clamp(1.05rem, 1.5vw, 1.4rem);
   padding: 10px 20px;
@@ -64,13 +72,10 @@ nav a:hover {
   header {
     flex-direction: column;
   }
-<<<<<<< HEAD
   #global .box {
     width: 200px;
     height: 200px;
   }
-=======
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
 }
 
 #titre {
@@ -256,11 +261,8 @@ input[type="date"].red {
   border: solid 2px red;
   color: red;
 }
-<<<<<<< HEAD
 
 #row div {
   font-size: clamp(1rem, 2vw, 2rem);
   color: #000;
 }
-=======
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47

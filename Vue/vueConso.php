@@ -6,7 +6,6 @@
             echo "<input name='valeur' type='hidden' value='$value'>";
             echo "<input name='date' type='hidden' value='$date'>";
         }
-<<<<<<< HEAD
         if (isset($_POST['start-date'])){
           $startDate = htmlspecialchars($_POST['start-date']);
         }
@@ -15,12 +14,7 @@
         }
     ?>
 <form action="index.php?action=changeconso" method="post">
-  <input type="date" id="start-date" name="start-date" value="<?=isset($startDate)?$startDate:""?>">
-=======
-    ?>
-<form action="index.php?action=changeconso" method="post">
   <input type="date" id="start-date" name="start-date" min="<?=$firstDate?>" value="<?=isset($startDate)?$startDate:""?>">
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
   <input type="date" id="end-date" name="end-date" value="<?=isset($endDate)?$endDate:""?>">
   <input type="submit" name="showButton" value="show">
 </form>
@@ -51,11 +45,7 @@
     const context = document.getElementById('myChart');
 
   new Chart(context, {
-<<<<<<< HEAD
     type: 'polarArea',
-=======
-    type: 'bar',
->>>>>>> 4a1118598167b711fefd01f80fc6a96a1874ab47
     data: {
       labels:datesList,
       datasets: [{
