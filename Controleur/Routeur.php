@@ -9,6 +9,11 @@ require_once 'Controleur/ControleurConso.php';
 require_once 'Controleur/ControleurAjout.php';
 require_once 'Vue/Vue.php';
 
+/**
+ * Classe Routeur
+ * Route les requettes entrantes vers les contrôleurs correspondants.
+ * Est également responsable de la gestion des erreurs et de la validation des paramètres des requêtes.
+ */
 class Routeur {
 
     private $ctrlAccueil;
@@ -27,7 +32,12 @@ class Routeur {
         $this->ctrlAjout = new ControleurAjout();
     }
 
-    // Route une requête entrante : exécution l'action associée
+    /**
+     * route requete vers controleur adéquat
+     *
+     * @return void
+     * @throws Exception Si il y a erreur.
+     */
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
@@ -129,13 +139,26 @@ class Routeur {
         }
     }
 
-    // Affiche une erreur
+    /**
+     * Gère l'affichage d'une vue pour une erreur donnée.
+     *
+     * @param string $msgErreur Le message d'erreur à afficher.
+     * @return void
+     */
     private function erreur($msgErreur) {
         $vue = new Vue("Erreur");
         $vue->generer(array('msgErreur' => $msgErreur));
     }
 
-    // Recherche un paramètre dans un tableau
+    /**
+     * Récupère la valeur d'un paramètre dans un tableau $_GET ou $_POST
+     * afin de vérifier qu'il existe.
+     *
+     * @param array $tableau Tableau contenant les données.
+     * @param string $nom Nom du paramètre à récupérer.
+     * @return mixed La valeur du paramètre trouvé dans le tableau.
+     * @throws Exception Si le paramètre demandé est absent du tableau.
+     */
     private function getParametre($tableau, $nom) {
         if (isset($tableau[$nom])) {
             return $tableau[$nom];

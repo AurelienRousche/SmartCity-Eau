@@ -1,2 +1,0 @@
-Rapport entre dates pour toute la ville : 
-SELECT SUM(valeur_litres) FROM consommation_eau WHERE date_mesure >= '2024-06-15 12:00:00' AND date_mesure <= '2024-06-19 12:00:00';

@@ -3,6 +3,10 @@
 require_once 'Modele/Fuite.php';		
 require_once 'Vue/Vue.php';
 
+/**
+ * Classe responsable de la gestion des données relatives aux fuites,
+ * ainsi qu'à leur affichage via les vues appropriées.
+ */
 class ControleurFuites {
 	
 	private $fuite;
@@ -11,7 +15,12 @@ class ControleurFuites {
 		$this->fuite = new Fuite();
 			
     }
-// Affiche la liste de tous les billets du blog
+
+    /**
+     * récupère informations fuites et génère vue avec
+     *
+     * @return void
+     */
 	public function fuites(){
 		$données = $this->fuite->getFuites();
         $vue = new Vue("Fuites");
