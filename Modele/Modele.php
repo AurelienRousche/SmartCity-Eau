@@ -10,17 +10,19 @@
  
 require_once 'config_db.php';
 
+/**
+ * Classe abstraite fournissant une interface pour les modèles interagissant avec une base de données.
+ */
 abstract class Modele {
 
-    /** Objet PDO d'accès à la BD */
     private $bdd;
 
     /**
      * Exécute une requête SQL éventuellement paramétrée
      * 
-     * @param string $sql La requête SQL
-     * @param array $valeurs Les valeurs associées à la requête
-     * @return PDOStatement Le résultat renvoyé par la requête
+     * @param string $sql
+     * @param array $params : Les valeurs potentiellement associées à la requête
+     * @return PDOStatement
      */
     protected function executerRequete($sql, $params = null) {
         if ($params == null) {
@@ -36,19 +38,15 @@ abstract class Modele {
     /**
      * Renvoie un objet de connexion à la BD en initialisant la connexion au besoin
      * 
-     * @return PDO L'objet PDO de connexion à la BDD
+     * @return PDO
      */
     private function getBdd() {
-		
-		global $host, $dbname, $user, $password;
-		
+		global $localhost, $localdbname, $localuser, $localpassword;
         if ($this->bdd == null) {
-            // Création de la connexion
-            $this->bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",
-                    "$user", "$password",
+            $this->bdd = new PDO("mysql:host=$localhost;dbname=$localdbname;charset=utf8",
+                    "$localuser", "$localpassword",
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
         return $this->bdd;
     }
-
 }

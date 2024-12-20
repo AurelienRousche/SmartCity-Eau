@@ -1,51 +1,291 @@
-/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
-   (min-height) sur un bloc, il faut que son parent direct ait lui-même une
-   hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
-   pixels, em, autres unités...).
-   Si la hauteur du parent est en pourcentage, elle se réfère alors à la
-   hauteur du «grand-père», et ainsi de suite.
-   Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
-   - un parent (body) en "height: 100%";
-   - le parent de body également en "height: 100%". */
-html, body {
-    height: 100%;
+* {
+  text-decoration: none;
+  font-family: monospace;
 }
 
 body {
-    color: #bfbfbf;
-    background: black;
-    font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-h1 {
-    color: white;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 200px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.titreBillet {
-    margin-bottom : 0px;
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
+}
+
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
+}
+
+a#title {
+  transition: transform 150ms;
+}
+
+a#title:hover {
+  transform: scale(1.02);
+}
+
+nav a {
+  font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+  padding: 10px 20px;
+  color: #000;
+}
+
+header nav a:active {
+  transform: scale(0.5);
+}
+
+nav a:hover {
+  border-bottom: solid 2px #23b3ef;
 }
 
 #global {
-    min-height: 100%;  /* Voir commentaire sur html et body plus haut */
-    background: #333534;
-    width: 70%;
-    margin: auto;	/* Permet de centrer la div */
-    text-align: justify;
-    padding: 5px 20px;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 50px 150px;
 }
 
-#contenu {
-    margin-bottom : 30px;
+@media screen and (max-width: 850px) {
+  #global {
+    margin: 15px;
+  }
+  header {
+    flex-direction: column;
+  }
+  #global .box {
+    width: 200px;
+    height: 200px;
+  }
 }
 
-#titreBlog, #piedBlog {
-    text-align: center;
+#titre {
+  color: #000;
 }
 
-#titreReponses {
-    font-size : 100%;
+#dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 10px;
+  gap: 20px;
+  width: fit-content;
 }
 
-#txtCommentaire {
-    width: 50%;
+.box {
+  background: #fff;
+  width: 250px;
+  height: 250px;
+  padding: 50px;
+  position: relative;
+  color: #000;
+  transition: 100ms;
+  border: solid 30px #000;
+  border-radius: 10px;
+}
+
+.box:hover,
+.capteur:hover {
+  transform: scale(1.02);
+}
+
+.box:active,
+.capteur:active {
+  transform: scale(0.94);
+}
+
+.box h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.metrecube {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+}
+
+.number {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  font-size: 7rem;
+  margin: 0;
+  color: #23b3ef;
+  font-family: monospace;
+}
+.number_m3 {
+  font-size: 7rem;
+  margin: 0;
+  color: #23b3ef;
+  font-family: monospace;
+}
+
+.m3 {
+  color: #23b3ef;
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+#capteurTitle {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.capteurs {
+  border: solid 2px #000;
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 50px rgba(35, 179, 239, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#addButton {
+  width: fit-content;
+  font-size: 2rem;
+  aspect-ratio: 1/1;
+  border: solid 2px #23b3ef;
+  color: #000;
+  transform: rotateZ(-15deg);
+  padding: 10px;
+  border-radius: 100px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 50px rgba(35, 179, 239, 0.5);
+  transition: 100ms;
+  margin-left: 8px;
+}
+
+#addButton:hover {
+  transform: rotateZ(0deg) scale(1.02);
+}
+
+.capteur {
+  background: #fff;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: solid 2px #23b3ef;
+  transition: 100ms;
+  box-shadow: 0 0 20px rgba(35, 179, 239, 0.3);
+}
+
+.capteur a {
+  font-size: clamp(1rem, 2vw, 2rem);
+  margin: 0;
+  color: #000;
+}
+
+.modifCapteur {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  gap: 20px;
+  border-radius: 10px;
+  padding: 50px;
+  border: solid 2px #000;
+  backdrop-filter: blur(3px);
+  background: transparent;
+}
+
+.modifCapteur p,
+.modifCapteur h2 {
+  margin: 0;
+}
+
+.modifCapteur input {
+  padding: 10px;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons a,
+.buttons button {
+  color: #fff;
+  background: #23b3ef;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  border: solid 2px grey;
+  transition: 100ms;
+}
+.buttons a:nth-child(2n) {
+  background: red;
+}
+
+.buttons a:hover,
+.buttons button:hover {
+  transform: scale(1.02);
+}
+
+.buttons a:active,
+.buttons button:active {
+  transform: scale(0.94);
+}
+
+.containerCanvas {
+  width: 70vw;
+  height: 500px;
+}
+
+#myChart {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: var(--height);
+  }
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+input[type="date"].red {
+  border: solid 2px red;
+  color: red;
+}
+
+#row div {
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: #000;
 }
