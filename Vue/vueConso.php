@@ -24,14 +24,16 @@
         }
     ?>
 <form action="index.php?action=changeconso" method="post">
-  <input type="date" id="start-date" name="start-date" value="<?=isset($startDate)?$startDate:""?>">
-  <input type="date" id="end-date" name="end-date" value="<?=isset($endDate)?$endDate:""?>">
+  <input type="date" required id="start-date" name="start-date" value="<?=isset($startDate)?$startDate:""?>">
+  <input type="date" required id="end-date" name="end-date" value="<?=isset($endDate)?$endDate:""?>">
   <input type="submit" name="showButton" value="show">
 </form>
 <div class="containerCanvas">
  <canvas id="myChart"></canvas>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<button id="download">Download</button>
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/html2canvas.js"></script>
 <script>
     const values = document.querySelectorAll("input[name='valeur']");
     const dates = document.querySelectorAll("input[name='date']");
@@ -86,5 +88,28 @@
     if (endDateInput.value < this.value) {
       endDateInput.value = this.value;
     }
+  });
+
+  const donwloadButton = document.getElementById('download');
+  const containerCanvas =document.querySelector('.containerCanvas');
+  console.log(containerCanvas);
+
+  donwloadButton.addEventListener('click', function(){
+    const captureArea = containerCanvas;
+
+    html2canvas(captureArea).then(canvas => {
+        // conversion du canvas en image
+        const imgData = canvas.toDataURL("image/png");
+
+        // lien du download
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'Consommation.png';
+
+        // clic pour le download
+        link.click();
+    }).catch(error => {
+        console.error("Erreur lors de la capture : ", error);
+    });
   });
 </script>
