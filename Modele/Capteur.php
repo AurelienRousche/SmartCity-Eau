@@ -15,7 +15,7 @@ class Capteur extends Modele {
     public function countCapteurs(){
         $sql = "SELECT COUNT(id_capteur) AS nbr_capteur FROM `capteurs_eau`";
         $capteurs = $this->executerRequete($sql);
-        return $capteurs;
+        return $capteurs->fetch();
     }
 
     /**

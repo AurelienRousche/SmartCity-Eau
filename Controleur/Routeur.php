@@ -109,12 +109,12 @@ class Routeur {
                     if($_POST['showButton']){
 
                         if (!empty($_POST['start-date'])){
-                            $startDate = htmlspecialchars($_POST['start-date']);
+                            $startDate = htmlspecialchars(strip_tags(trim($_POST['start-date'])));
                         }else {
                             $erreur['start-date'] = true;
                         }
                         if (!empty($_POST['end-date'])){
-                            $endDate = htmlspecialchars($_POST['end-date']);
+                            $endDate = htmlspecialchars(strip_tags(trim($_POST['end-date'])));
                         }else {
                             $erreur['end-date'] = true;
                         }

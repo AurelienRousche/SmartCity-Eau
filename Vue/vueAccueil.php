@@ -1,9 +1,7 @@
 <?php $this->titre = "Accueil Smartcity"; ?>
 	 
 <?php 
-    foreach ($capteurs as $capteur){
-        $nbr_capteurs = $capteur['nbr_capteur'];
-    }
+    $nbr_capteurs = $capteurs['nbr_capteur'];
     $nbr_fuites = $fuites['nbr_fuites'];
     $conso_tot = $consoTot['tot'];
 ?>
