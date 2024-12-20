@@ -55,7 +55,7 @@ class ControleurCapteurs {
      *
      * @param $idCapteur : id du capteur à modifier
      * @param $emplacement : nouvelle addresse du capteur
-     * @param $valeur : nouvelle valeur du capteur (désactivé pour capteur de type fuite)
+     * @param $valeur : nouvelle valeur du capteur (désactivé pour capteur de type fuite
      * @return void
      */
     public function modifCapteurs($idCapteur, $emplacement, $valeur){

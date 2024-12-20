@@ -38,4 +38,16 @@ class ControleurConso {
         $vue = new Vue("Conso");
         $vue->generer(array('consosDates'=>$consos));
     }
+
+    public function guestConso(){
+        $consos = $this->conso->consoDernierJour();
+        $vue = new Vue("Conso");
+        $vue->genererGuest(array('conso' => $consos));
+    }
+
+    public function guestChangeConso($startDate, $endDate){
+        $consos = $this->conso->calcConso($startDate, $endDate);
+        $vue = new Vue("Conso");
+        $vue->genererGuest(array('conso'=>$consos));
+    }
 }

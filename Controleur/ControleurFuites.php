@@ -26,5 +26,4 @@ class ControleurFuites {
         $vue = new Vue("Fuites");
         $vue->generer(array('fuites' => $données));
     }
-
 }

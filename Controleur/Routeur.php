@@ -7,6 +7,7 @@ require_once 'Controleur/ControleurAccueil.php';
 require_once 'Controleur/ControleurCapteurs.php';
 require_once 'Controleur/ControleurConso.php';
 require_once 'Controleur/ControleurAjout.php';
+require_once 'Controleur/ControleurLogin.php';
 require_once 'Vue/Vue.php';
 
 /**
@@ -22,6 +23,8 @@ class Routeur {
     private $ctrlCapteurs;
     private $ctrlConso;
     private $ctrlAjout;
+    private $ctrlLogin;
+    private $token;
 
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();
@@ -30,6 +33,7 @@ class Routeur {
         $this->ctrlCapteurs = new ControleurCapteurs();
         $this->ctrlConso = new ControleurConso();
         $this->ctrlAjout = new ControleurAjout();
+        $this->ctrlLogin = new ControleurLogin();
     }
 
     /**
@@ -40,19 +44,23 @@ class Routeur {
      */
     public function routerRequete() {
         try {
-            if (isset($_GET['action'])) {
+            if (isset($_GET['action'])){
+                if ($_GET['action']=='accueil') {
+                    $this->ctrlAccueil->accueil();
+                    exit();
+                }
                 if ($_GET['action']=='fuites') {
 					$this->ctrlFuites->fuites();
                     exit();
 				}
 				else if($_GET['action']=='fuite'){
-					if(isset($_GET['id'])) {
-						$this->ctrlFuite->fuite($_GET['id']);
+                    if(isset($_GET['id'])) {
+                        $this->ctrlFuite->fuite($_GET['id']);
                         exit();
-					}
-					else {
-						throw new Exception("Pas d'id");
-					}
+                    }
+                    else {
+                        throw new Exception("Pas d'id");
+                    }
 				}
 				else if($_GET['action']=='edit_fuite'){
 					if(isset($_POST['statut'])){
@@ -107,7 +115,6 @@ class Routeur {
                 }
                 if ($_GET['action'] == 'changeconso'){
                     if($_POST['showButton']){
-
                         if (!empty($_POST['start-date'])){
                             $startDate = htmlspecialchars(strip_tags(trim($_POST['start-date'])));
                         }else {
@@ -120,7 +127,6 @@ class Routeur {
                         }
                         if (empty($erreur)){
                             $this->ctrlConso->changeConso($startDate, $endDate);
-
                         }
                         else {
                             $this->ctrlConso->showConso();
@@ -129,9 +135,19 @@ class Routeur {
                 }
                 else
                     throw new Exception("Action non valide");
-            }   
-            else {  // aucune action définie : affichage de l'accueil
-                $this->ctrlAccueil->accueil();
+            }
+            else {
+                if(isset($_POST['username']) && isset($_POST['password'])){
+                    $ldap = ldap_connect("smartcity.lan");
+                    if(@ldap_bind($ldap, $this->getParametre($_POST,'username'), $this->getParametre($_POST,'password'))) {
+                        $this->ctrlAccueil->accueil();
+                    }
+                    else {
+                        $this->ctrlLogin->login();
+                    }
+                    exit();
+                }
+                $this->ctrlLogin->login();
             }
         }
         catch (Exception $e) {
