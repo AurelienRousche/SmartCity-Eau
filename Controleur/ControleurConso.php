@@ -21,7 +21,7 @@ class ControleurConso {
      * @return void
      */
     public function showConso(){
-        $consos = $this->conso->consoDernierJour();
+        $consos = $this->conso->consoDernierJourQuartier();
         $vue = new Vue("Conso");
         $vue->generer(array('conso' => $consos));
     }
@@ -36,6 +36,6 @@ class ControleurConso {
     public function changeConso($startDate, $endDate){
         $consos = $this->conso->calcConso($startDate, $endDate);
         $vue = new Vue("Conso");
-        $vue->generer(array('conso'=>$consos));
+        $vue->generer(array('consosDates'=>$consos));
     }
 }

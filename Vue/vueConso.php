@@ -1,11 +1,21 @@
 <?php $this->titre = "Consommation"; ?>
     <?php
-        foreach($conso as $valeur){
-            $value = $valeur['valeur_litres'];
-            $date = $valeur['date'];
+    if (isset($_POST['showButton'])){
+        foreach($consosDates as $valeur){
+            $value = $valeur['conso_dates'];
+            $quartier = $valeur['quartier'];
             echo "<input name='valeur' type='hidden' value='$value'>";
-            echo "<input name='date' type='hidden' value='$date'>";
+            echo "<input name='date' type='hidden' value='$quartier'>";
         }
+    }
+    else {
+        foreach($conso as $valeur){
+          $value = $valeur['conso_dernier_jour'];
+          $quartier = $valeur['quartier'];
+          echo "<input name='valeur' type='hidden' value='$value'>";
+          echo "<input name='date' type='hidden' value='$quartier'>";
+        }
+    }
         if (isset($_POST['start-date'])){
           $startDate = htmlspecialchars($_POST['start-date']);
         }
@@ -14,7 +24,7 @@
         }
     ?>
 <form action="index.php?action=changeconso" method="post">
-  <input type="date" id="start-date" name="start-date" min="<?=$firstDate?>" value="<?=isset($startDate)?$startDate:""?>">
+  <input type="date" id="start-date" name="start-date" value="<?=isset($startDate)?$startDate:""?>">
   <input type="date" id="end-date" name="end-date" value="<?=isset($endDate)?$endDate:""?>">
   <input type="submit" name="showButton" value="show">
 </form>

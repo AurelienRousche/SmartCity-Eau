@@ -12,8 +12,8 @@ class Conso extends Modele {
      *
      * @return PDOStatement
      */
-    public function consoDernierJour(){
-        $sql = "SELECT DATE_FORMAT(date_mesure, '%W %d-%m-%y') AS date, valeur_litres FROM consommation_eau ORDER BY date_mesure";
+    public function consoDernierJourQuartier(){
+        $sql = "SELECT SUM(valeur_litres) AS conso_dernier_jour, quartier FROM consommation_eau WHERE date_mesure >= DATE_SUB(CURDATE(), INTERVAL 1 DAY) GROUP BY quartier";
         $conso = $this->executerRequete($sql);
         return $conso;
     }
@@ -26,7 +26,7 @@ class Conso extends Modele {
      * @return PDOStatement
      */
     public function calcConso($startDate, $endDate){
-        $sql = "SELECT DATE_FORMAT(date_mesure, '%W %d/%m/%y') AS date, valeur_litres FROM consommation_eau WHERE date_mesure>=? AND date_mesure<=?";
+        $sql = "SELECT SUM(valeur_litres) AS conso_dates, quartier FROM consommation_eau WHERE date_mesure>=? AND date_mesure<=? GROUP BY quartier";
         $consos = $this->executerRequete($sql, array($startDate, $endDate));
         return $consos;
     }
@@ -37,7 +37,7 @@ class Conso extends Modele {
      * @return mixed
      */
     public function calcConsoTotaleDernierJour(){
-        $sql = "SELECT SUM(valeur_litres) AS tot FROM consommation_eau WHERE date_mesure >= DATE_SUB(CURDATE(), INTERVAL 1 DAY);";
+        $sql = "SELECT SUM(valeur_litres) AS tot FROM consommation_eau WHERE date_mesure >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
         $consoTotDernierJour = $this->executerRequete($sql);
         return $consoTotDernierJour->fetch();
     }
