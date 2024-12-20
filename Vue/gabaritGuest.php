@@ -1,29 +1,24 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="style.css"/>
-        <title><?= $titre ?></title>
-    </head>
-    <body>
-        <div id="global">
-            <header>
-                <a id="title" href="index.php?action=accueil"><h1 id="titre">SmartCity - Eau</h1></a>
-                <nav>
-                    <a href="<?= "index.php?action=capteurs" ?>">Capteurs</a>
-                    <a href="<?= "index.php?action=fuites" ?>">Fuites</a>
-                    <a href="<?= "index.php?action=conso" ?>">Consommation</a>
-                </nav>
-            </header>
-            <div id="contenu">
-                <?= $contenu ?>
-            </div> <!-- #contenu -->
-            <footer id="piedBlog">
-                &copy; 2024-2025
-            </footer>
-        </div> <!-- #global -->
-        <canvas id="canvas"></canvas>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Login Smartcity</title>
+</head>
+<body>
+<div id="global">
+    <header>
+        <a id="title" href="index.php"><h1 id="titre">SmartCity - Eau</h1></a>
+    </header>
+    <div id="contenu">
+        <?= $contenu ?>
+    </div> <!-- #contenu -->
+    <footer id="piedBlog">
+        &copy; 2024-2025
+    </footer>
+</div> <!-- #global -->
+<canvas id="canvas"></canvas>
+</body>
 </html>
 <script>
     const canvas = document.getElementById('canvas');
@@ -33,7 +28,7 @@
     canvas.height =window.innerHeight;
 
     let particles = [];
-    
+
     class Particle {
         constructor(){
             this.size = Math.random()*5 + 3;
@@ -74,7 +69,7 @@
         requestAnimationFrame(loop);
     }
 
-    
+
     window.addEventListener('resize', function(){
         particles = [];
         createParticles();
